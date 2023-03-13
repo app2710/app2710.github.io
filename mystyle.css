@@ -1,0 +1,119 @@
+main-container {
+    display: flex;
+    flex-direction: column;
+  /*   justify-content: center; */
+  }
+  top-container {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 650px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  top {
+    margin: auto;
+    padding: 5px;
+    /* outline: none;
+    border: 0;
+    text-decoration: none; */
+  }
+  a:link, a:visited {
+    color: #5a1390;
+    text-decoration: none;
+  }
+  .ThisPage {
+    color: #2236b9;
+    font-size: 2em;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+  }
+  center-container {
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    padding: 50px;
+    padding-left: 150px;
+    justify-content: left;
+    align-items: center;
+  }
+
+  
+  cent {
+    padding: 5px;
+    /* justify-content: left; */
+  }
+  
+  #profilephoto {
+    flex-grow:1;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 50%;
+    background-color: #ffffff;
+    align-items: center;
+  }
+  
+  #content {
+    flex-grow:2;
+    text-align: left;
+    align-items: left;
+    max-width: 700px;
+  }
+  
+  .vl {
+    border-left: 1px solid #668096;
+    height: 450px;
+  }
+  
+  copyright-container {
+    text-align: center;
+    margin-top:7px;
+  }
+
+  #skill_table {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    border-collapse: collapse;
+    width: 70%;
+  }
+  
+  #skill_table td, #skill_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #skill_table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #skill_table tr:hover {background-color: #ddd;}
+  
+  #skill_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  @media screen and (max-width: 1000px) {
+    center-container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-left: 50px;
+      height: 800px;
+    }
+    top-container {
+        width: 400px;
+    }
+    #skill_table {
+        width: 100%;
+      }
+  }
