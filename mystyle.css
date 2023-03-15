@@ -1,6 +1,10 @@
+body {
+  margin: 0;
+}
 main-container {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
   }
   top-container {
     display: flex;
@@ -32,10 +36,11 @@ main-container {
     text-align: justify;
     height: 100%;
     vertical-align: auto;
+    flex: 1;
   }
 
   cent {
-    padding: 5px;
+    padding: 70px;
   }
   
   #profilephoto {
@@ -93,7 +98,7 @@ main-container {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
+    background-color: #6804aa;
     color: white;
   }
 
