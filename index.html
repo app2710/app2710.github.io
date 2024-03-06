@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      width: 100%;
+      vertical-align: middle;
+    }
+    
+    .centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+    
+    .footer {
+      align-items: bottom;
+      text-align: center;
+      margin-top:7px;
+      position: absolute;
+      bottom:0;
+      border-top: 1px solid #000;
+      padding: 1rem;
+      width: 100%;
+    }
+    img {
+      border-radius: 50%;
+      width: 50%;
+      background-color: #ffffff;
+      align-items: center;
+    }
+    a:link, a:visited {
+    color: #202e75;
+    text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container is-fluid">
+    <div class="columns">
+      <div class="column">
+        <div class="tabs is-centered is-boxed is-medium custom-tabs">
+            <ul>
+              <li class="is-active"><a href="index.html"> Home </a></li>
+              <li> <a href="EdEx.html"> Education and Experience </a> </li>
+              <li><a href="Leadership.html"> Leadership </a></li>
+              <li><a href="Interests.html"> Interests </a></li>
+            </ul>
+            </div>
+      </div>
+    </div>
+    <!-- <div class="divider"></div> -->
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <div class="centered">
+          <img src="profilepic.png" alt="Photo">
+          <p class="has-text-centered">
+            <a href="https://www.linkedin.com/in/apoorv-parikh/">LinkedIn </a> | 
+            <a href="mailto:apoorv.parikh@gmail.com">e-mail</a> | 
+            <a href="https://orcid.org/0000-0003-2768-5153" target="_blank">ORCiD</a>
+          </p>
+        </div>
+      </div>
+      <div class="content">
+        <h1 class="title is-1"> About </h1>
+        <p> I am Apoorv Parikh, a first-year PhD student in chemical engineering department at UofC. My current research focus is synthesising adsorbent for carbon capture from a point source. </p>
+        <p> I took the following courses during my first year: </p>
+        <ul>    
+            <li>Advanced heat transfer</li>
+            <li>Special problems: carbon capture</li>
+            <li>Chemical reactor designing</li>
+            <li>Experimental design and error anlysis</li>
+            <li>Introduction to software development</li>
+        </ul>
+        <p>See my full CV as PDF <a href="https://1drv.ms/b/s!AqPBSSmqHNjMgesAQDibpYNQzhLsiA?e=JpYnvI" target="_blank">here.</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <p class="has-text-centered">&#169; 2023 Apoorv P Parikh. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
