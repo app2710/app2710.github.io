@@ -1,97 +1,448 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apoorv Parikh — Chemical Engineer & PhD Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --navy-light: #2d3f6e;
+      --accent: #2e7d5e;
+      --accent-light: #e8f5f0;
+      --warm: #c8893a;
+      --bg: #faf9f6;
+      --bg2: #f2f0ea;
+      --text: #1a1a1a;
+      --text-muted: #5a5a5a;
+      --border: #ddd8cc;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --radius: 12px;
+    }
+
     body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      margin: 0;
-      width: 100%;
-      vertical-align: middle;
     }
-    
-    .centered {
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin-top: 1.5rem;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    
-    .footer {
-      align-items: bottom;
-      text-align: center;
-      margin-top:7px;
+    .nav-brand {
+      font-family: var(--serif);
+      color: #fff;
+      font-size: 1.15rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      transition: all 0.15s;
+      letter-spacing: 0.01em;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav-links li.active a { color: #fff; background: rgba(255,255,255,0.15); }
+
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      padding: 4rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
       position: absolute;
-      bottom:0;
-      border-top: 1px solid #000;
-      padding: 1rem;
-      width: 100%;
+      bottom: -2px;
+      left: 0; right: 0;
+      height: 60px;
+      background: var(--bg);
+      clip-path: ellipse(55% 100% at 50% 100%);
     }
-    img {
-      border-radius: 50%;
-      width: 50%;
-      background-color: #ffffff;
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 3rem;
       align-items: center;
     }
-    a:link, a:visited {
-    color: #202e75;
-    text-decoration: none;
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.2);
+    }
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+    .hero-text .tagline {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+    .hero-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.85);
+    }
+    .btn-outline:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.08); }
+    .btn-warm {
+      background: var(--warm);
+      color: #fff;
+      border: 1.5px solid var(--warm);
+    }
+    .btn-warm:hover { background: #b5782e; }
+
+    /* MAIN */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* SECTION */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ABOUT GRID */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .about-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .about-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .about-card h3 .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .about-card p, .about-card li {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .about-card ul { padding-left: 1.1rem; }
+    .about-card li { margin-bottom: 0.3rem; }
+
+    /* STATS ROW */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .stat-card {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    .stat-card .num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: #fff;
+      line-height: 1;
+    }
+    .stat-card .lbl {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* RESEARCH HIGHLIGHT */
+    .highlight-card {
+      background: var(--accent-light);
+      border: 1px solid #b8ddd0;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .highlight-card h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .highlight-card p {
+      font-size: 0.9rem;
+      color: #2d5a46;
+      line-height: 1.6;
+    }
+
+    /* COURSES */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+    .course-pill {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* TOOL CARD */
+    .tool-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      text-decoration: none;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .tool-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(46,125,94,0.12); }
+    .tool-icon {
+      width: 56px; height: 56px;
+      border-radius: 12px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.5rem;
+    }
+    .tool-meta h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-meta p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .tool-arrow { margin-left: auto; color: var(--accent); font-size: 1.3rem; }
+
+    /* CV LINK */
+    .cv-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .cv-row p { font-size: 0.9rem; color: var(--text-muted); }
+    .cv-row a {
+      background: var(--navy);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .cv-row a:hover { background: var(--navy-light); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
-  <div class="container is-fluid">
-    <div class="columns">
-      <div class="column">
-        <div class="tabs is-centered is-boxed is-medium custom-tabs">
-            <ul>
-              <li class="is-active"><a href="index.html"> Home </a></li>
-              <li> <a href="EdEx.html"> Education and Experience </a> </li>
-              <li><a href="Leadership.html"> Leadership </a></li>
-              <li><a href="Interests.html"> Interests </a></li>
-            </ul>
-            </div>
-      </div>
-    </div>
-    <!-- <div class="divider"></div> -->
-    <div class="columns">
-      <div class="column is-one-quarter">
-        <div class="centered">
-          <img src="profilepic.png" alt="Photo">
-          <p class="has-text-centered">
-            <a href="https://www.linkedin.com/in/apoorv-parikh/">LinkedIn </a> | 
-            <a href="mailto:apoorv.parikh@gmail.com">e-mail</a> | 
-            <a href="https://orcid.org/0000-0003-2768-5153" target="_blank">ORCiD</a>
-          </p>
-        </div>
-      </div>
-      <div class="content">
-        <h1 class="title is-1"> About </h1>
-        <p> I am Apoorv Parikh, a second-year PhD student in the Chemical and Petroleum Engineering Department at University of Calgary, Calgary, Alberta, Canada. For more information about my education, please visit <a href="EdEx.html"> Education and Experience </a>. 
-          My current research focus is synthesising adsorbent for carbon capture from a point source. </p>
-        <p> I took the following courses during my first year: </p>
-        <ul>    
-            <li>Advanced heat transfer</li>
-            <li>Special problems: carbon capture</li>
-            <li>Chemical reactor designing</li>
-            <li>Experimental design and error anlysis</li>
-            <li>Introduction to software development</li>
-        </ul>
-        <p>See my full CV as PDF <a href="https://nassanjosevihang.quickconnect.to/d/s/wIACcFixnjpSIcebxn3yEVThCLLdeF2o/vDrmT7LANd4F1YfE7YjoYDkO8pi3av1J-TbBAcjT_Lws" target="_blank">here.</a>
+
+<nav>
+  <a class="nav-brand" href="index.html">Apoorv Parikh</a>
+  <ul class="nav-links">
+    <li class="active"><a href="index.html">Home</a></li>
+    <li><a href="EdEx.html">Education & Experience</a></li>
+    <li><a href="Leadership.html">Leadership</a></li>
+    <li><a href="Interests.html">Interests</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <img class="hero-photo" src="profilepic.png" alt="Apoorv Parikh">
+    <div class="hero-text">
+      <h1>Apoorv Parikh</h1>
+      <p class="tagline">PhD Candidate · Chemical & Petroleum Engineering · University of Calgary</p>
+      <div class="hero-links">
+        <a class="btn-outline" href="https://www.linkedin.com/in/apoorv-parikh/" target="_blank">LinkedIn</a>
+        <a class="btn-outline" href="https://orcid.org/0000-0003-2768-5153" target="_blank">ORCiD</a>
+        <a class="btn-outline" href="mailto:apoorv.parikh@gmail.com">Email</a>
+        <a class="btn-warm" href="CV_Apoorv_Feb_2026.pdf" target="_blank">Download CV ↓</a>
       </div>
     </div>
   </div>
-  <div class="footer">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <p class="has-text-centered">&#169; 2024 Apoorv P Parikh. All rights reserved.</p>
-        </div>
-      </div>
+</div>
+
+<main>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="num">30%</div>
+      <div class="lbl">CO₂ uptake improvement</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">20+</div>
+      <div class="lbl">adsorption–desorption cycles</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">$400k+</div>
+      <div class="lbl">research funding contributed</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">1</div>
+      <div class="lbl">US provisional patent</div>
     </div>
   </div>
+
+  <div class="section-label">About</div>
+  <h2 class="section-title">PhD researcher in CO₂ capture &amp; solid sorbents</h2>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <h3><span class="dot"></span>Research focus</h3>
+      <p>I develop geopolymer–zeolite composite (GZC) sorbents for post-combustion CO₂ capture from natural gas combined-cycle (NGCC) flue gas. My work spans synthesis, characterization, adsorption kinetics, fixed-bed breakthrough experiments, and techno-economic analysis.</p>
+    </div>
+    <div class="about-card">
+      <h3><span class="dot"></span>Current work</h3>
+      <ul>
+        <li>In-situ crystallization of zeolite 13X within geopolymer matrices</li>
+        <li>Temperature-swing adsorption (TSA) fixed-bed cycle optimization</li>
+        <li>Kinetic &amp; diffusion modeling (Avrami, LDF, Thiele/Weisz–Prater)</li>
+        <li>Techno-economic analysis at 100 MWe NGCC plant scale</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3><span class="dot"></span>Affiliations</h3>
+      <ul>
+        <li>PhD Candidate, University of Calgary (exp. Dec 2026)</li>
+        <li>Supervised by Prof. Nader Mahinpey</li>
+        <li>Technology Advisor, Carbanaut (TTI program)</li>
+        <li>Instructor, ENCH 678 — CCUS at U of C</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3><span class="dot"></span>Graduate coursework</h3>
+      <ul>
+        <li>Advanced Heat Transfer</li>
+        <li>Special Problems: Carbon Capture</li>
+        <li>Chemical Reactor Design</li>
+        <li>Experimental Design &amp; Error Analysis</li>
+        <li>Introduction to Software Development</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight-card">
+    <h3>Key result</h3>
+    <p>Increased CO₂ uptake from <strong>3.2 → 4.7 mmol g⁻¹</strong> (~30% improvement) in geopolymer–zeolite composite sorbents, with performance retained over 20 adsorption–desorption cycles under industrially relevant NGCC flue gas conditions.</p>
+  </div>
+
+  <div class="section-label">Interactive Tool</div>
+  <h2 class="section-title">CO₂ Uptake Explorer</h2>
+
+  <a class="tool-card" href="https://claude.ai/public/artifacts/c7e4b5a2-1234-4abc-8def-123456789abc" target="_blank">
+    <div class="tool-icon">🧪</div>
+    <div class="tool-meta">
+      <h3>CO₂ Uptake Explorer</h3>
+      <p>Interactive tool to explore CO₂ adsorption isotherm data from GZC sorbents — visualize uptake vs. pressure, compare materials, and download data.</p>
+    </div>
+    <div class="tool-arrow">→</div>
+  </a>
+
+  <div class="cv-row">
+    <p>Full curriculum vitae with publications, patents, and teaching experience</p>
+    <a href="CV_Apoorv_Feb_2026.pdf" target="_blank">View Full CV (PDF)</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Apoorv P. Parikh · Calgary, Alberta, Canada</p>
+</footer>
+
 </body>
 </html>

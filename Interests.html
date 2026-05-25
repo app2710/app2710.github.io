@@ -1,103 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interests — Apoorv Parikh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-      width: 100%;
-      vertical-align: middle;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a2744; --navy-light: #2d3f6e; --accent: #2e7d5e;
+      --accent-light: #e8f5f0; --warm: #c8893a; --bg: #faf9f6;
+      --bg2: #f2f0ea; --text: #1a1a1a; --text-muted: #5a5a5a;
+      --border: #ddd8cc; --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif; --radius: 12px;
     }
-    
-    .centered {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin-top: 1.5rem;
-    }
-    
-    .footer {
-      align-items: bottom;
-      text-align: center;
-      margin-top:7px;
-      position: absolute;
-      bottom:0;
-      border-top: 1px solid #000;
-      padding: 1rem;
-      width: 100%;
-    }
-    img {
-      border-radius: 50%;
-      width: 50%;
-      background-color: #ffffff;
-      align-items: center;
-    }
-    a:link, a:visited {
-    text-decoration: none;
-    color: #202e75;
-    }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+    nav { background: var(--navy); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-family: var(--serif); color: #fff; font-size: 1.15rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 0.25rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; padding: 0.4rem 0.85rem; border-radius: 6px; transition: all 0.15s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav-links li.active a { color: #fff; background: rgba(255,255,255,0.15); }
+    .page-header { background: var(--navy); padding: 2.5rem 2rem 3.5rem; position: relative; }
+    .page-header::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 50px; background: var(--bg); clip-path: ellipse(55% 100% at 50% 100%); }
+    .page-header-inner { max-width: 1000px; margin: 0 auto; }
+    .page-header h1 { font-family: var(--serif); font-size: 2.2rem; color: #fff; }
+    .page-header p { color: rgba(255,255,255,0.55); margin-top: 0.35rem; font-size: 0.9rem; }
+    main { max-width: 1000px; margin: 0 auto; padding: 2.5rem 2rem; flex: 1; width: 100%; }
+    .section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .section-title { font-family: var(--serif); font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem; }
 
-    .is-active {
-        color: #08573e;
+    /* INTEREST CARDS */
+    .interest-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 3rem; }
+    .interest-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+      display: flex; flex-direction: column;
     }
+    .ic-header {
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .ic-emoji { font-size: 1.5rem; }
+    .ic-header h3 { font-size: 1rem; font-weight: 600; color: var(--navy); }
+    .ic-body { padding: 1rem 1.5rem 1.25rem; flex: 1; }
+    .ic-body p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.6rem; }
+    .ic-body p:last-child { margin-bottom: 0; }
+    .ic-body ul { padding-left: 1.1rem; }
+    .ic-body li { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.3rem; }
+    .ic-body li:last-child { margin-bottom: 0; }
+
+    /* CHEM ENG INTERESTS */
+    .chem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 3rem; }
+    .chem-card {
+      background: var(--accent-light); border: 1px solid #b8ddd0;
+      border-radius: var(--radius); padding: 1.25rem;
+    }
+    .chem-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-bottom: 0.4rem; }
+    .chem-card p { font-size: 0.82rem; color: #2d5a46; line-height: 1.55; }
+
+    /* LINK CARD */
+    .link-card {
+      background: var(--navy); border-radius: var(--radius); padding: 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      text-decoration: none; transition: background 0.15s; margin-bottom: 1rem;
+    }
+    .link-card:hover { background: var(--navy-light); }
+    .link-card-text h4 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+    .link-card-text p { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+    .link-card-arrow { color: rgba(255,255,255,0.6); font-size: 1.2rem; flex-shrink: 0; }
+
+    footer { background: var(--navy); color: rgba(255,255,255,0.45); text-align: center; padding: 1.25rem; font-size: 0.8rem; }
   </style>
 </head>
 <body>
-  <div class="container is-fluid">
-    <div class="columns">
-      <div class="column">
-        <div class="tabs is-centered is-boxed is-medium">
-            <ul>
-              <li ><a href="index.html"> Home </a></li>
-              <li> <a href="EdEx.html"> Education and Experience </a> </li>
-              <li><a href="Leadership.html"> Leadership </a></li>
-              <li class="is-active"><a href="Interests.html"> Interests </a></li>
-            </ul>
-            </div>
+
+<nav>
+  <a class="nav-brand" href="index.html">Apoorv Parikh</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="EdEx.html">Education & Experience</a></li>
+    <li><a href="Leadership.html">Leadership</a></li>
+    <li class="active"><a href="Interests.html">Interests</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>Interests</h1>
+    <p>Research curiosities, hobbies, and things that get me excited</p>
+  </div>
+</div>
+
+<main>
+
+  <div class="section-label">Research Interests</div>
+  <h2 class="section-title">Chemical engineering focus areas</h2>
+
+  <div class="chem-grid">
+    <div class="chem-card">
+      <h4>Carbon Capture &amp; Storage</h4>
+      <p>Solid sorbent development, TSA/VSA swing processes, and techno-economic analysis for NGCC and industrial point sources.</p>
+    </div>
+    <div class="chem-card">
+      <h4>Heterogeneous Catalysis</h4>
+      <p>Catalyst characterization, kinetic modeling, high-throughput screening, and structure–activity relationships in porous materials.</p>
+    </div>
+    <div class="chem-card">
+      <h4>Reactor Engineering</h4>
+      <p>Fixed-bed design, mass transfer analysis, Thiele modulus, scale-up from lab to pilot, and process intensification.</p>
+    </div>
+    <div class="chem-card">
+      <h4>Adsorption Science</h4>
+      <p>Isotherm modeling, kinetic &amp; diffusion analysis, breakthrough curve characterization, and material shaping for industrial deployment.</p>
+    </div>
+    <div class="chem-card">
+      <h4>Zeolite &amp; Geopolymer Chemistry</h4>
+      <p>In-situ crystallization, synthesis optimization via DOE, and composite material design for selective gas separation.</p>
+    </div>
+    <div class="chem-card">
+      <h4>Techno-Economic Analysis</h4>
+      <p>Process modeling, cost of capture estimation, sensitivity analysis, and feasibility assessment for emerging CCUS technologies.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Hobbies</div>
+  <h2 class="section-title">Outside the lab</h2>
+
+  <div class="interest-grid">
+    <div class="interest-card">
+      <div class="ic-header">
+        <span class="ic-emoji">📷</span>
+        <h3>Landscape &amp; Astrophotography</h3>
+      </div>
+      <div class="ic-body">
+        <p>I shoot with a Nikon Z5 full-frame mirrorless camera, primarily targeting landscape and deep-sky objects. For astrophotography, I use a Sky-Watcher Star Adventurer 2i tracking mount to capture faint nebulae and galaxies.</p>
+        <p>Recent targets include M81/M82 and the Heart &amp; Soul Nebulae from dark-sky sites south of Calgary. I process images in Siril and post to Instagram as <a href="https://www.instagram.com/app2710_photography/" target="_blank" style="color:var(--accent);">@app2710_photography</a>.</p>
       </div>
     </div>
-    <div class="columns">
-      <div class="column is-one-quarter">
-        <div class="centered">
-          <img src="profilepic.png" alt="Photo">
-          <p class="has-text-centered">
-            <a href="https://www.linkedin.com/in/apoorv-parikh/">LinkedIn </a> | <a href="mailto:apoorv.parikh@gmail.com">e-mail</a> | <a href="https://orcid.org/0000-0003-2768-5153" target="_blank">ORCiD</a>
-          </p>
-        </div>
+
+    <div class="interest-card">
+      <div class="ic-header">
+        <span class="ic-emoji">🔭</span>
+        <h3>Stargazing &amp; Astro Events</h3>
       </div>
-      <div class="content">
-        <h1 class="title is-1"> Interests </h1>
-        <par style="font-size: 2em;">
-            Chemical Engineering: <br>
-        </par>
+      <div class="ic-body">
+        <p>Regular dark-sky trips to sites in Vulcan County and the foothills west of Calgary for visual observing and imaging sessions.</p>
         <ul>
-            <li>Heterogeneous catalysis </li>
-            <li>Carbon capture </li>
-            <li>Reactor engineering </li>
+          <li>Polar alignment and PA drift correction with the SA 2i</li>
+          <li>Planning sessions around lunar cycles and Bortle class maps</li>
+          <li>Tracking meteor showers, conjunctions, and occultations</li>
         </ul>
-        <par style="font-size: 2em;">
-            Hobbies: <br>
-        </par>
-        <ul>
-            <li> Photography: Landscapes and astro-photography (Visit my instagram profile: <a href="https://www.instagram.com/app2710/" target="_blank">@app2710</a>)</li>
-            <li> Learning new tech </li>
-            <li> Stargazing and observing astro-events</li>
-        </ul>
+      </div>
+    </div>
+
+    <div class="interest-card">
+      <div class="ic-header">
+        <span class="ic-emoji">🥾</span>
+        <h3>Hiking</h3>
+      </div>
+      <div class="ic-body">
+        <p>Exploring trails in Kananaskis Country and the Canadian Rockies near Calgary. Partial to scenic day hikes with dramatic mountain backdrops — great for landscape photography too.</p>
+      </div>
+    </div>
+
+    <div class="interest-card">
+      <div class="ic-header">
+        <span class="ic-emoji">🎹</span>
+        <h3>Keyboard &amp; Music</h3>
+      </div>
+      <div class="ic-body">
+        <p>Playing keyboard as a creative outlet and way to decompress after long days in the lab. Learning pieces across different genres and experimenting with arrangements.</p>
       </div>
     </div>
   </div>
-  <div class="footer">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <p class="has-text-centered">&#169; 2023 Apoorv P Parikh. All rights reserved.</p>
-        </div>
-      </div>
+
+  <div class="section-label">Photography</div>
+  <h2 class="section-title">Follow my work</h2>
+
+  <a class="link-card" href="https://www.instagram.com/app2710_photography/" target="_blank">
+    <div class="link-card-text">
+      <h4>@app2710_photography on Instagram</h4>
+      <p>Landscape &amp; astrophotography from Alberta and beyond — Nikon Z5, Sky-Watcher SA 2i</p>
     </div>
-  </div>
+    <span class="link-card-arrow">→</span>
+  </a>
+
+</main>
+
+<footer>
+  <p>© 2026 Apoorv P. Parikh · Calgary, Alberta, Canada</p>
+</footer>
+
 </body>
 </html>

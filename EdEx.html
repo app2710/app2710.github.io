@@ -1,114 +1,369 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education & Experience — Apoorv Parikh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-      width: 100%;
-      vertical-align: middle;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --navy-light: #2d3f6e;
+      --accent: #2e7d5e;
+      --accent-light: #e8f5f0;
+      --warm: #c8893a;
+      --bg: #faf9f6;
+      --bg2: #f2f0ea;
+      --text: #1a1a1a;
+      --text-muted: #5a5a5a;
+      --border: #ddd8cc;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --radius: 12px;
     }
-    
-    .centered {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin-top: 1.5rem;
+
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; position: sticky; top: 0; z-index: 100;
     }
-    
-    .footer {
-      align-items: bottom;
-      text-align: center;
-      margin-top:25px;
-      vertical-align: text-bottom;
-      position: absolute;
-      bottom:0;
-      border-top: 1px solid #000;
-      padding: 1rem;
-      width: 100%;
+    .nav-brand { font-family: var(--serif); color: #fff; font-size: 1.15rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 0.25rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; padding: 0.4rem 0.85rem; border-radius: 6px; transition: all 0.15s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav-links li.active a { color: #fff; background: rgba(255,255,255,0.15); }
+
+    .page-header {
+      background: var(--navy);
+      padding: 2.5rem 2rem 3.5rem;
+      position: relative;
     }
-    img {
-      border-radius: 50%;
-      width: 50%;
-      background-color: #ffffff;
-      align-items: center;
+    .page-header::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 50px; background: var(--bg);
+      clip-path: ellipse(55% 100% at 50% 100%);
     }
-    a:link, a:visited {
-    text-decoration: none;
-    color: #202e75;
-  }
+    .page-header-inner { max-width: 1000px; margin: 0 auto; }
+    .page-header h1 { font-family: var(--serif); font-size: 2.2rem; color: #fff; }
+    .page-header p { color: rgba(255,255,255,0.55); margin-top: 0.35rem; font-size: 0.9rem; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 2.5rem 2rem; flex: 1; width: 100%; }
+
+    /* SECTION DIVIDER */
+    .section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .section-title { font-family: var(--serif); font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem; }
+
+    /* TIMELINE ENTRY */
+    .timeline { position: relative; padding-left: 2rem; margin-bottom: 2.5rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 6px; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .timeline-entry { position: relative; margin-bottom: 0.75rem; }
+    .timeline-entry:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: -2.45rem; top: 5px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+    }
+    .timeline-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .timeline-card .meta {
+      display: flex; align-items: baseline; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;
+    }
+    .timeline-card .role { font-size: 1rem; font-weight: 600; color: var(--navy); }
+    .timeline-card .period {
+      font-size: 0.78rem; color: var(--text-muted); white-space: nowrap;
+      background: var(--bg2); padding: 0.2rem 0.6rem; border-radius: 20px;
+    }
+    .timeline-card .institution {
+      font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem;
+    }
+    .timeline-card .institution a { color: inherit; text-decoration: none; }
+    .timeline-card .institution a:hover { text-decoration: underline; }
+    .timeline-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.6rem; }
+    .timeline-card ul { padding-left: 1.1rem; }
+    .timeline-card li { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.3rem; }
+    .timeline-card li:last-child { margin-bottom: 0; }
+
+    /* BADGE STRIP */
+    .badge-strip { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+    .badge {
+      background: var(--accent-light); color: var(--accent);
+      border: 1px solid #b8ddd0; border-radius: 20px;
+      font-size: 0.73rem; font-weight: 500; padding: 0.2rem 0.65rem;
+    }
+    .badge-warm {
+      background: #fef3e2; color: #a06a1e;
+      border-color: #f0c87a;
+    }
+
+    /* PUBLICATIONS SECTION */
+    .pub-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .pub-card .pub-type {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem;
+    }
+    .pub-card .pub-title { font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+    .pub-card .pub-detail { font-size: 0.82rem; color: var(--text-muted); }
+    .pub-card .pub-detail a { color: var(--accent); text-decoration: none; }
+    .pub-card .pub-detail a:hover { text-decoration: underline; }
+    .pub-card.patent { border-left-color: var(--warm); }
+    .pub-card.book { border-left-color: #7a5cad; }
+    .pub-card.conference { border-left-color: var(--accent); }
+
+    /* SKILLS GRID */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+    .skill-group { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .skill-group h4 { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); margin-bottom: 0.6rem; }
+    .skill-group p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    footer { background: var(--navy); color: rgba(255,255,255,0.45); text-align: center; padding: 1.25rem; font-size: 0.8rem; }
   </style>
 </head>
-
 <body>
-  <div class="container is-fluid">
-    <div class="columns">
-      <div class="column">
-        <div class="tabs is-centered is-boxed is-medium">
+
+<nav>
+  <a class="nav-brand" href="index.html">Apoorv Parikh</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="active"><a href="EdEx.html">Education & Experience</a></li>
+    <li><a href="Leadership.html">Leadership</a></li>
+    <li><a href="Interests.html">Interests</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>Education &amp; Experience</h1>
+    <p>Academic training, industry roles, publications, and technical skills</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- EDUCATION -->
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic background</h2>
+
+  <div class="timeline">
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="meta">
+          <span class="role">Doctor of Philosophy — Chemical &amp; Petroleum Engineering</span>
+          <span class="period">2022 – Present (exp. Dec 2026)</span>
+        </div>
+        <div class="institution"><a href="https://www.ucalgary.ca/" target="_blank">University of Calgary</a>, Calgary, AB, Canada</div>
+        <p><strong>Thesis:</strong> Development of novel solid sorbent — geopolymer–zeolite composite — for CO₂ capture from cogeneration power plants. Supervised by Prof. Nader Mahinpey.</p>
         <ul>
-          <li><a href="index.html"> Home </a></li>
-          <li class="is-active"> <a href="EdEx.html"> Education and Experience </a></li>
-          <li><a href="Leadership.html"> Leadership </a></li>
-          <li><a href="Interests.html"> Interests </a></li>
+          <li>Synthesized and characterized geopolymer–zeolite composite (GZC) sorbents via in-situ crystallization of zeolite 13X within geopolymer matrices.</li>
+          <li>Improved CO₂ uptake from 3.2 to 4.7 mmol g⁻¹ (~30%) with stability retained over 20 adsorption–desorption cycles.</li>
+          <li>Characterized materials using XRD, XRF, SEM, BET surface area, BJH pore volume analysis.</li>
+          <li>Performed fixed-bed breakthrough experiments with MKS RGA mass spectrometer; fitted Yoon–Nelson and Thomas models.</li>
+          <li>Developed kinetic and diffusion models (Avrami, LDF, Thiele modulus, Weisz–Prater criterion, Arrhenius).</li>
+          <li>Built Aspen Adsorption models for TSA feasibility and scale-up sensitivity at 100 MWe NGCC plant.</li>
+          <li>Contributed to COSIA- and NSERC-funded proposals supporting over $400k in awarded research funding.</li>
+          <li>Named first inventor on U.S. Provisional Patent No. 63/931,682.</li>
         </ul>
+        <div class="badge-strip">
+          <span class="badge">Zeolite 13X</span>
+          <span class="badge">Geopolymer</span>
+          <span class="badge">CO₂ capture</span>
+          <span class="badge">Fixed-bed TSA</span>
+          <span class="badge">TGA</span>
+          <span class="badge">XRD / XRF</span>
+          <span class="badge">Aspen Adsorption</span>
+          <span class="badge">Python</span>
         </div>
       </div>
     </div>
-    <div class="columns">
-      <div class="column is-one-third">
-        <div class="centered">
-          <img src="profilepic.png" alt="Photo">
-          <p class="has-text-centered">
-            <a href="https://www.linkedin.com/in/apoorv-parikh/">LinkedIn </a> | <a href="mailto:apoorv.parikh@gmail.com">e-mail</a> | <a href="https://orcid.org/0000-0003-2768-5153" target="_blank">ORCiD</a>
-          </p>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="meta">
+          <span class="role">MSc — Chemical Process Technology</span>
+          <span class="period">2019 – 2021</span>
+        </div>
+        <div class="institution"><a href="https://www.tue.nl/en/" target="_blank">Eindhoven University of Technology (TU/e)</a>, Eindhoven, Netherlands</div>
+        <p><strong>Thesis:</strong> Conversion–selectivity trade-off in methane dehydroaromatization through parametric evaluations. Supervised by Prof. Martin van Sint Annaland.</p>
+        <ul>
+          <li>Investigated heterogeneous catalyst performance in a tubular reactor (oven + GC setup).</li>
+          <li>Obtained highest experimental benzene yield by varying space velocity; validated with MATLAB kinetic model.</li>
+          <li>Coursework in transport phenomena, reaction engineering, catalysis, separation technology.</li>
+        </ul>
+        <div class="badge-strip">
+          <span class="badge">Heterogeneous catalysis</span>
+          <span class="badge">Methane dehydroaromatization</span>
+          <span class="badge">MATLAB</span>
+          <span class="badge">Aspen Plus</span>
         </div>
       </div>
-      <div class="content">
-        <h1 class="title is-1"> Education </h1>
-        <b>Novel Solid Adsorbentss for Low Temperature Carbon Capture, PhD (Pursuing)</b>, <a href="https://www.ucalgary.ca/"> <i> University of Calgary </i></a>, Calgary, Alberta, Canada. <i> 2022 - Present </i>
-            <ul>
-                <li> Preparing Geopolymer-Zeolite Composites (GZC) for CO<sub>2</sub> adsorption even from low concentration stream. </li>
-                <li> Also have prepared zeolite 13X with several changes in synthesis parameters.  </li>
-                <li> Several CO2 adsorption capacity tests such as breakthrough curve, isotherms have been carried out using TGA and isotherm ASAP2020 instruments. </li>
-                <li> Material characterizations were carried out using XRD, XRF, BET surface area, BJH volume distribution.</li>
-                <li> The future work involves preparing pellets of the adsorbent, followed by attrition resistance tests. </li>
-                <li> Publications including results will be linked on this webpage soon. </li>
-            </ul>
-            <b>Chemical Process Technology, MSc</b>, <a href="https://www.tue.nl/en/"> <i> Eindhoven University of Technology </i></a>, Eindhoven, The Netherlands. <i> 2019 — 2021 </i>
-            <ul>
-                <li> Advanced courses on transport phenomena, reaction engineering, catalysis, separation technology and several electives with msatering various software such as, MATLAB, AspenPlus.</li>
-                <li>Graduation thesis: Conversion-Selectivity trade-off in methane dehydroaromatization through parametric evaluations.
-                    <ul>
-                        <li>Experimental studies comprised of heterogeneous catalyst, tubular reactor encompassed in oven and a GC.</li>
-                        <li>I obtained highest yield of benzene by varying space velocity. (experimentally and with MATLAB model)</li>
-                        <li>Catalyst bed dilution was attempted.</li>
-                    </ul>
-                </li>
-            </ul>
-            
-            <b>Chemical Engineering, Bachelor of Engineering</b>, <a href="https://www.gtu.ac.in/"> <i>Gujarat Technological University</i></a>, Gujarat, India, <i> 2014 — 2018</i>
-            <ul>
-                <li>Introductory courses on transport phenomena, reaction engineering, heat transfer, nano technology and several electives</li>
-                <li>Final year project: Extraction of value added chemicals from water hyacinth - several extraction techniques were studied and
-                    experimented</li>
-            </ul>
-        <h1 class="title is-1"> Experience </h1>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot" style="background: var(--text-muted);"></div>
+      <div class="timeline-card">
+        <div class="meta">
+          <span class="role">Bachelor of Engineering — Chemical Engineering</span>
+          <span class="period">2014 – 2018</span>
+        </div>
+        <div class="institution"><a href="https://www.gtu.ac.in/" target="_blank">Gujarat Technological University</a>, Gujarat, India</div>
         <ul>
-            <li> Four mounths industrial experience at Avantium Chemicals, Amsterdam, the Netherlands. </li>
-            <li> Analysed commercial catalyst pellets for partial hydrogenation using High Throughput Catalyst Testing reactors offering single string catalyst setup. </li> 
-            <li> The main feature of this setup is that the same operating conditions as industries can be stimulated at lab scale on actual catalyst pellets to understand mass transfer resistance. </li>
+          <li>Courses in transport phenomena, reaction engineering, heat transfer, nanotechnology.</li>
+          <li>Final-year project: Extraction of value-added chemicals from water hyacinth — studied and experimentally tested several extraction techniques.</li>
         </ul>
       </div>
     </div>
   </div>
-  <footer class="footer has-background-light"> <!-- Add has-background-light for background color -->
-    <div class="container">
-      <p class="has-text-centered">&#169; 2024 Apoorv P Parikh. All rights reserved.</p>
+
+  <!-- INDUSTRY EXPERIENCE -->
+  <div class="section-label">Industry Experience</div>
+  <h2 class="section-title">Professional roles</h2>
+
+  <div class="timeline">
+    <div class="timeline-entry">
+      <div class="timeline-dot" style="background: var(--warm);"></div>
+      <div class="timeline-card">
+        <div class="meta">
+          <span class="role">Technology Advisor (Internship)</span>
+          <span class="period">Sept – Dec 2025</span>
+        </div>
+        <div class="institution">Carbanaut Engineering, Calgary, AB</div>
+        <ul>
+          <li>Screened and down-selected organic linker chemistries for COF-based sorbents based on compatibility, stability, and scale-up synthesis constraints.</li>
+          <li>Coordinated external adsorption and characterization testing to close data gaps for material benchmarking.</li>
+          <li>Synthesized experimental results into technical recommendations guiding subsequent material development priorities.</li>
+        </ul>
+        <div class="badge-strip">
+          <span class="badge-warm badge">COF sorbents</span>
+          <span class="badge-warm badge">Material benchmarking</span>
+          <span class="badge-warm badge">Scale-up</span>
+        </div>
+      </div>
     </div>
-  </footer>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot" style="background: var(--warm);"></div>
+      <div class="timeline-card">
+        <div class="meta">
+          <span class="role">Project Leader — Catalyst Optimization</span>
+          <span class="period">Apr – Sept 2021</span>
+        </div>
+        <div class="institution"><a href="https://www.avantium.com/" target="_blank">Avantium Chemicals</a>, Amsterdam, Netherlands</div>
+        <ul>
+          <li>Designed and executed a 16-condition high-throughput screening campaign for selective hydrogenation catalysts using the Flowrence® platform.</li>
+          <li>Analyzed conversion–selectivity trade-offs across catalyst formulations and dilution ratios to identify optimal operating windows.</li>
+          <li>Delivered experimentally-supported recommendations that informed catalyst selection and process development.</li>
+        </ul>
+        <div class="badge-strip">
+          <span class="badge-warm badge">High-throughput screening</span>
+          <span class="badge-warm badge">Selective hydrogenation</span>
+          <span class="badge-warm badge">Flowrence® platform</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEACHING -->
+  <div class="section-label">Teaching</div>
+  <h2 class="section-title">Teaching experience</h2>
+
+  <div class="timeline" style="margin-bottom:2.5rem;">
+    <div class="timeline-entry">
+      <div class="timeline-dot" style="background:#7a5cad;"></div>
+      <div class="timeline-card">
+        <div class="meta">
+          <span class="role">Course Instructor — ENCH 678: CCUS Technologies</span>
+          <span class="period">Ongoing</span>
+        </div>
+        <div class="institution">University of Calgary, Calgary, AB</div>
+        <p>Delivered lectures and coordinated industry field visits for the graduate CCUS course. Instructed 45+ mid-career professionals in techno-economic analysis and CCUS feasibility planning at NAIT.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUBLICATIONS & PATENTS -->
+  <div class="section-label">Output</div>
+  <h2 class="section-title">Publications, patents &amp; conferences</h2>
+
+  <div class="pub-card conference">
+    <div class="pub-type">Journal Article — 2025</div>
+    <div class="pub-title">Optimizing Zeolite 13X Synthesis from Kaolin Clay for Higher CO₂ Adsorption: A Statistical Approach</div>
+    <div class="pub-detail">Parikh, A.; Mahinpey, N. <em>ChemCatChem</em> 2025, 17, e00980. <a href="https://doi.org/10.1002/cctc.202500980" target="_blank">doi:10.1002/cctc.202500980</a></div>
+  </div>
+
+  <div class="pub-card patent">
+    <div class="pub-type">US Provisional Patent — 2024</div>
+    <div class="pub-title">In-situ Synthesis of Zeolite 13X–Geopolymer Composite Sorbents for Low-Temperature CO₂ Capture</div>
+    <div class="pub-detail">Parikh, A. (first-named inventor). U.S. Provisional Patent Application No. 63/931,682.</div>
+  </div>
+
+  <div class="pub-card book">
+    <div class="pub-type">Book Chapter — 2026</div>
+    <div class="pub-title">Contributing Author — Chemical Looping Combustion (Elsevier, 2026)</div>
+    <div class="pub-detail"><a href="https://doi.org/10.1016/B978-0-443-26659-1.00001-7" target="_blank">Chapter 1</a> · <a href="https://doi.org/10.1016/B978-0-443-26659-1.00004-2" target="_blank">Chapter 4</a></div>
+  </div>
+
+  <div class="pub-card conference">
+    <div class="pub-type">Conference Proceedings — 2024</div>
+    <div class="pub-title">GHGT-17 Conference Proceedings</div>
+    <div class="pub-detail">Parikh, A.; Mahinpey, N. <a href="https://doi.org/10.2139/ssrn.5067692" target="_blank">doi:10.2139/ssrn.5067692</a></div>
+  </div>
+
+  <div class="pub-card">
+    <div class="pub-type">Conference Presentations</div>
+    <div class="pub-title">Presenter at CSChE 2023, CSChE 2024, and GHGT-17 (2024)</div>
+    <div class="pub-detail">Topics: GZC sorbent synthesis, characterization, and breakthrough performance.</div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section-label" style="margin-top:2rem;">Skills</div>
+  <h2 class="section-title">Technical skills</h2>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Programming &amp; Data Analysis</h4>
+      <p>Python (NumPy, pandas, SciPy, matplotlib, scikit-learn) · MATLAB · Design of Experiments (DOE)</p>
+    </div>
+    <div class="skill-group">
+      <h4>Modeling &amp; Simulation</h4>
+      <p>Aspen Plus · Aspen Adsorption · kinetic &amp; diffusion modeling · techno-economic assessment</p>
+    </div>
+    <div class="skill-group">
+      <h4>Experimental &amp; Characterization</h4>
+      <p>TGA · fixed-bed adsorption columns · adsorption isotherms (ASAP2020) · XRD · XRF · SEM · BET · BJH</p>
+    </div>
+    <div class="skill-group">
+      <h4>Methods</h4>
+      <p>Statistical modeling · kinetic analysis (Avrami, LDF, Arrhenius) · breakthrough curve modeling (Thomas, Yoon–Nelson) · Weisz–Prater criterion</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Apoorv P. Parikh · Calgary, Alberta, Canada</p>
+</footer>
+
 </body>
 </html>
